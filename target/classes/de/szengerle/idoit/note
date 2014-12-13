@@ -1,0 +1,12 @@
+{
+catg=[
+	{
+		id=31, 
+		title=Overview page, 
+		const=C__CATG__OVERVIEW, 
+		multi_value=0, 
+		source_table=isys_catg_overview
+	}, 
+	{
+		id=50, title=Connectors, const=C__CATG__CONNECTOR, parent=49, multi_value=1, source_table=isys_catg_connector}, {id=80, title=IT-Service assignment, const=C__CATG__IT_SERVICE, multi_value=1, source_table=isys_catg_its_components}, {id=82, title=Relationship, const=C__CATG__RELATION, multi_value=1, source_table=isys_catg_relation}, {id=10, title=Interface, const=C__CATG__UNIVERSAL_INTERFACE, parent=49, multi_value=1, source_table=isys_catg_ui}, {id=38, title=Accounting, const=C__CATG__ACCOUNTING, multi_value=0, source_table=isys_catg_accounting}, {id=1, title=General, const=C__CATG__GLOBAL, multi_value=0, source_table=isys_catg_global}, {id=21, title=Contact assignment, const=C__CATG__CONTACT, multi_value=1, source_table=isys_catg_contact}, {id=26, title=Location, const=C__CATG__LOCATION, multi_value=0, source_table=isys_catg_location}, {id=2, title=Model, const=C__CATG__MODEL, multi_value=0, source_table=isys_catg_model}, {id=3, title=Form factor, const=C__CATG__FORMFACTOR, multi_value=0, source_table=isys_catg_formfactor}, {id=9, title=Power consumer, const=C__CATG__POWER_CONSUMER, multi_value=1, source_table=isys_catg_pc}, {id=40, title=Interface, const=C__CMDB__SUBCAT__NETWORK_INTERFACE_P, parent=7, multi_value=1, source_table=isys_catg_netp}, {id=7, title=Network, const=C__CATG__NETWORK, multi_value=1, source_table=isys_catg_netp}, {id=39, title=Port, const=C__CMDB__SUBCAT__NETWORK_PORT, parent=7, multi_value=1, source_table=isys_catg_port}, {id=41, title=log. Port, const=C__CMDB__SUBCAT__NETWORK_INTERFACE_L, parent=7, multi_value=1, source_table=isys_catg_log_port}, {id=28, title=Manual assignment, const=C__CATG__MANUAL, multi_value=1, source_table=isys_catg_manual}, {id=18, title=Emergency plan assignment, const=C__CATG__EMERGENCY_PLAN, multi_value=1, source_table=isys_catg_emergency_plan}, {id=20, title=Files, const=C__CATG__FILE, multi_value=1, source_table=isys_catg_file}, {id=22, title=Logbook, const=C__CATG__LOGBOOK, multi_value=1, source_table=isys_catg_logb}, {id=14, title=Access, const=C__CATG__ACCESS, multi_value=1, source_table=isys_catg_access}, {id=32, title=Workflows, const=C__CATG__WORKFLOW, multi_value=1, source_table=isys_catg_workflow}, {id=27, title=Object picture, const=C__CATG__IMAGE, multi_value=0, source_table=isys_catg_image}, {id=49, title=Cabling, const=C__CATG__CABLING, multi_value=0, source_table=isys_catg_virtual}]}
+
