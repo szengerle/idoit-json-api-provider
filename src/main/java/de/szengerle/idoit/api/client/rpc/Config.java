@@ -15,13 +15,23 @@ import javax.net.ssl.X509TrustManager;
 
 public class Config {
 	
+	private static String url;
+	private static String apikey;
+	
+	public static void setUrl(String url) {
+		Config.url = url;
+	}
+
+	public static void setApikey(String apikey) {
+		Config.apikey = apikey;
+	}
+
 	public static URL getUrl() {
 		
 		enableUntrustedConnection();
 		
 		try {
-			return new URL("https://localhost:10443/src/jsonrpc.php");
-			//return new URL("http://localhost/src/jsonrpc.php");
+			return new URL(url);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -29,8 +39,7 @@ public class Config {
 	}
 	
 	public static String getApiKey() {
-		return "11f7onffip";
-		//return "23m2s2rdbc";
+		return apikey;
 	}
 	
 	private static void enableUntrustedConnection() {

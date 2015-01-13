@@ -21,6 +21,44 @@ public class GenericFactory {
 	static ObjectMapper mapper = new ObjectMapper();
 	static JsonRpcHttpClient client = new JsonRpcHttpClient(Config.getUrl());
 	
+	public static ArrayList<GenericObject> getGenericObjectsByTitle(String title, int type) {
+
+		HashMap<String, String> filter = new HashMap<String, String>();
+		filter.put("title", title + "%");
+		if(type != 0) filter.put("type", String.valueOf(type));
+		try {
+			final CollectionType RETURN_CLASS = mapper.getTypeFactory().constructCollectionType(List.class, GenericObject.class);
+			
+			@SuppressWarnings("unchecked")
+			ArrayList<GenericObject> o_arr = (ArrayList<GenericObject>) client.invoke("cmdb.objects",	ImmutableMap.of("apikey", Config.getApiKey(), "filter", filter), RETURN_CLASS);
+			
+			//cmdb.objectS returns an array with objects; check if only one and extract it
+			
+			if(o_arr.size() == 0) {
+				throw new RuntimeException("Object by Title not found!");
+			}
+			
+			for(GenericObject obj : o_arr) {
+				obj = getGenericObjectById(obj.getId());
+				GenericCategoryList ol = client.invoke(
+						"cmdb.object_type_categories",
+						ImmutableMap.of("apikey", Config.getApiKey(), "type",obj.getObjecttype()), GenericCategoryList.class);
+				log.info("Category List of Object loaded. count(catg)="
+						+ ol.getCatg().size());
+				obj.setCat_list(ol);
+			}
+			return o_arr;
+		} catch (JsonRpcClientException e) {
+			// handle idoit error
+			log.error("idoit: " + e.getMessage() + e.getData());
+			throw new RuntimeException("idoit: " + e.getMessage() + e.getData());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	public static GenericObject getGenericObjectByTitle(String title, int type) {
 		HashMap<String, String> filter = new HashMap<String, String>();
 		filter.put("title", title + "%");
